@@ -264,6 +264,19 @@
   }
 }
 
+@keyframes loader-out {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

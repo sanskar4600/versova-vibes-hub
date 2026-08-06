@@ -201,19 +201,11 @@ export function CookieConsent() {
 }
 
 export function Loader() {
-  const [gone, setGone] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setGone(true), 900);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
     <div
       aria-hidden
-      className={`fixed inset-0 z-[100] grid place-items-center bg-background transition-opacity duration-700 ${
-        gone ? "pointer-events-none opacity-0" : "opacity-100"
-      }`}
+      className="pointer-events-none fixed inset-0 z-[100] grid place-items-center bg-background"
+      style={{ animation: "loader-out 1.1s var(--ease-apple) forwards" }}
     >
       <div className="text-center">
         <span className="mx-auto grid size-16 animate-pulse place-items-center rounded-full border border-primary/40 font-[family-name:var(--font-display)] text-2xl text-primary">
