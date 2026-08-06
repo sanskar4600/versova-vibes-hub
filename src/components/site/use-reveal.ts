@@ -39,7 +39,7 @@ export function useCountUp(to: number, duration = 1600) {
     let raf = 0;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
+        if (!entry?.isIntersecting) return;
         io.disconnect();
         const start = performance.now();
         const tick = (now: number) => {

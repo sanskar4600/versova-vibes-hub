@@ -28,8 +28,8 @@ export type MenuItem = {
   desc: string;
   veg: boolean;
   spicy: 0 | 1 | 2 | 3;
-  chef?: boolean;
-  image?: string;
+  chef?: boolean | undefined;
+  image?: string | undefined;
 };
 
 export type MenuCategory = {

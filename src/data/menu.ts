@@ -20,8 +20,11 @@ const build = (rows: Row[]): MenuItem[] =>
     chef: Boolean(chef),
   }));
 
-const withImage = (items: MenuItem[], map: Record<string, string>) =>
-  items.map((i) => (map[i.name] ? { ...i, image: map[i.name] } : i));
+const withImage = (items: MenuItem[], map: Record<string, string>): MenuItem[] =>
+  items.map((i) => {
+    const image = map[i.name];
+    return image ? { ...i, image } : i;
+  });
 
 export const MENU: MenuCategory[] = [
   {
@@ -217,11 +220,13 @@ export const MENU: MenuCategory[] = [
   },
 ];
 
-export const SIGNATURE = [
-  MENU[0].items[0],
-  MENU[1].items[0],
-  MENU[2].items[0],
-  MENU[5].items[0],
-  MENU[8].items[2],
-  MENU[9].items[1],
-].filter(Boolean) as MenuItem[];
+const pick = (cat: number, item: number): MenuItem | undefined => MENU[cat]?.items[item];
+
+export const SIGNATURE: MenuItem[] = [
+  pick(0, 0),
+  pick(1, 0),
+  pick(2, 0),
+  pick(5, 0),
+  pick(8, 2),
+  pick(9, 1),
+].filter((i): i is MenuItem => Boolean(i));
